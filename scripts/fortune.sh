@@ -13,7 +13,7 @@ rm $message
 
 ## execute the python script
 
-python fortune.py
+/usr/bin/env python3 fortune.py
 
 ## cleanup the mess
 
