@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="alternate" type="application/atom+xml" href="{{ website_url }}/{%if file == 'cowsay.html'%}cowfeed{%else%}tuxfeed{%endif%}_atom.xml" title="Fortune Atom Feed">
+    <link rel="alternate" type="application/rss+xml" href="{{ website_url }}/{%if file == 'cowsay.html'%}cowfeed{%else%}tuxfeed{%endif%}_rss.xml" title="Fortune RSS Feed">
     <title>Fortune - The daily fortune said by a cow, or Tux</title>
 </head>
 <body>
@@ -13,6 +15,7 @@
     <nav>
         <a href="cowsay.html">Cowsay</a>
         <a href="tuxsay.html">Tuxsay</a>
+        <a href="{{ website_url }}/{%if file == 'cowsay.html'%}cowfeed{%else%}tuxfeed{%endif%}_rss.xml" title="Fortune RSS Feed">RSS Feed</a>
     </nav>
   </header>
 

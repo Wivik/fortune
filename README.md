@@ -24,6 +24,18 @@ Clone this repository.
 
 Go to the `scripts` folder.
 
+Install the Python requirements.
+
+```bash
+pip install -r requirements.txt
+```
+
+Open `fortune.py` and adapt the first variable content according to your website URL.
+
+```python
+website_url = 'https://fortune.zedas.fr'
+```
+
 Launch `fortune.sh`.
 
 Expose with the webserver of your choice the `www` folder.
