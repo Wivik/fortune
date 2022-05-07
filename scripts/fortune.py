@@ -40,11 +40,11 @@ def write_rss(whosays):
         # print(cowsay_file)
         with open(say_file, 'r') as file:
             content = file.read()
-        date = say_file.split('_')[1].replace('.txt', '')
-        date = datetime.fromtimestamp(int(date)).isoformat()
+        timestamp = say_file.split('_')[1].replace('.txt', '')
+        date = datetime.fromtimestamp(int(timestamp)).isoformat()
         fe = feed.add_entry()
         fe.title('Today\'s daily fortune')
-        fe.id(website_url + '/'+ whosays +'say.html')
+        fe.id(website_url + '/'+ whosays +'say-'+ timestamp +'.html')
         fe.content('<pre>' + content + '</pre>')
         fe.link(href=website_url + '/'+ whosays +'say.html')
         # print(cowsay_date)
@@ -52,6 +52,9 @@ def write_rss(whosays):
 
     feed.atom_file(os.path.join(www_path, whosays +'feed_atom.xml'))
     feed.rss_file(os.path.join(www_path, whosays +'feed_rss.xml'))
+
+    # print(feed.atom_str(pretty=True))
+    # print(feed.rss_str(pretty=True))
 
 
 def write_template(fortune, file):

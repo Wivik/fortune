@@ -14,7 +14,7 @@ fi
 
 ## Purge older messages than ten days
 
-find ${mypath}/histo -type f -mdate +10
+find ${mypath}/histo -type f -mtime +10
 
 ## generate today's fortune
 
