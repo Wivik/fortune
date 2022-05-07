@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
+from datetime import datetime, time
 from feedgen.feed import FeedGenerator
 import glob
 import jinja2
 import os
+import pytz
 
 ## where are we
 script_path = os.path.dirname(__file__)
@@ -13,6 +14,7 @@ histo_path = os.path.join(script_path, 'histo')
 
 ## some vars
 website_url = 'https://fortune.zedas.fr'
+locale_tz = 'Europe/Paris'
 
 def load_fortune(file):
     """ load the fortune file for a variable """
@@ -21,7 +23,7 @@ def load_fortune(file):
     fortune.close()
     return output
 
-def write_rss(whosays):
+def write_rss(whosays, fortune):
     """ write the rss feed according to the histo folder """
     if whosays == 'cow':
         saidby = 'A Cow'
@@ -36,19 +38,16 @@ def write_rss(whosays):
     feed.link(href=website_url, rel='alternate')
     feed.language('en')
 
-    for say_file in sorted(glob.glob(histo_path + '/'+ whosays +'say_*.txt'), key=os.path.getmtime, reverse=True):
-        # print(cowsay_file)
-        with open(say_file, 'r') as file:
-            content = file.read()
-        timestamp = say_file.split('_')[1].replace('.txt', '')
-        date = datetime.fromtimestamp(int(timestamp)).isoformat()
-        fe = feed.add_entry()
-        fe.title('Today\'s daily fortune')
-        fe.id(website_url + '/'+ whosays +'say-'+ timestamp +'.html')
-        fe.content('<pre>' + content + '</pre>')
-        fe.link(href=website_url + '/'+ whosays +'say.html')
-        # print(cowsay_date)
-        file.close()
+    date = datetime.now()
+    timestamp = datetime.timestamp(date)
+    # print(date)
+    # print(int(timestamp))
+
+    fe = feed.add_entry()
+    fe.title('Today\'s daily fortune')
+    fe.id(website_url + '/'+ whosays +'say-'+ str(int(timestamp)) +'.html')
+    fe.content('<pre>' + fortune + '</pre>')
+    fe.link(href=website_url + '/'+ whosays +'say.html')
 
     feed.atom_file(os.path.join(www_path, whosays +'feed_atom.xml'))
     feed.rss_file(os.path.join(www_path, whosays +'feed_rss.xml'))
@@ -72,15 +71,15 @@ def main():
     ## get the two fortune files
     cowsay = load_fortune(os.path.join(script_path, 'cowsay.txt'))
     tuxsay = load_fortune(os.path.join(script_path, 'tuxsay.txt'))
-    print(cowsay)
-    print(tuxsay)
+    # print(cowsay)
+    # print(tuxsay)
     ## write template
     write_template(cowsay, 'index.html')
     write_template(cowsay, 'cowsay.html')
     write_template(tuxsay, 'tuxsay.html')
     ## write RSS
-    write_rss(whosays='cow')
-    write_rss(whosays='tux')
+    write_rss(whosays='cow', fortune=cowsay)
+    write_rss(whosays='tux', fortune=tuxsay)
 
 
 if __name__ == '__main__':
