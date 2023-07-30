@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-RUN apt-get update && apt-get install -y fortune-mod cowsay
+RUN apt-get update && apt-get install -y fortune-mod cowsay --no-install-recommends && apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 RUN groupadd fortune && useradd fortune -g fortune -d /fortune
 
