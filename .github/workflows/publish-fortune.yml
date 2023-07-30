@@ -7,10 +7,13 @@ jobs:
   fortune:
     runs-on: ubuntu-latest
     steps:
+      - name: Pull image
+        run: |
+          docker pull ghcr.io/wivik/fortune:latest
+
       - name: Generate fortune
-        uses: docker://ghcr.io/wivik/fortune:latest
-        with:
-          args: "-w https://fortune.zedas.fr"
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/fortune/output ghcr.io/wivik/fortune:latest -w https://fortune.zedas.fr
 
       - run: find .
         
