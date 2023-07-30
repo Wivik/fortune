@@ -13,7 +13,9 @@ jobs:
 
       - name: Generate fortune
         run: |
-          docker run --rm -v ${{ github.workspace }}:/fortune/output ghcr.io/wivik/fortune:latest -w https://fortune.zedas.fr
+          mkdir output
+          chmod 777 output
+          docker run --rm -v ${{ github.workspace }}/output:/fortune/output ghcr.io/wivik/fortune:latest -w https://fortune.zedas.fr
 
       - run: find .
         
