@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/Wivik/fortune/compare/v0.1.1...v0.2.0) (2023-07-30)
+
+
+### Features
+
+* add output dir ([8f6cd39](https://github.com/Wivik/fortune/commit/8f6cd39628338d8b2250219036ef0940d3b28d20))
+
+
+
 ## [0.1.1](https://github.com/Wivik/fortune/compare/v0.1.0...v0.1.1) (2023-07-30)
 
 
