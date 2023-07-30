@@ -2,12 +2,10 @@
 
 from datetime import datetime, time
 from feedgen.feed import FeedGenerator
-import glob
+import argparse
 import jinja2
 import os
 import subprocess
-import argparse
-
 
 ## argument
 arg_parser = argparse.ArgumentParser()
