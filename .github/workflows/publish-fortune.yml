@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate fortune
-        uses: docker://ghcr.io/wivik/fortune:v0.1.0
+        uses: docker://ghcr.io/wivik/fortune:latest
         with:
           args: "-w https://fortune.zedas.fr"
 
