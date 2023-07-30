@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y fortune-mod cowsay
 
 RUN groupadd fortune && useradd fortune -g fortune -d /fortune
 
-COPY --chown=fortune:fortune scripts /fortune
+COPY --chown=fortune:fortune --chmod=640 scripts /fortune
 
 ENV PATH=$PATH:/usr/games/
 
