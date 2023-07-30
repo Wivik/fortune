@@ -42,3 +42,9 @@ jobs:
           labels: "${{ env.REGISTRY }}/wivik/fortune:${{ steps.changelog.outputs.tag }},${{ env.REGISTRY }}/wivik/fortune:latest"
           file: Dockerfile
           context: "{{defaultContext}}:container"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+          tag_name: ${{ steps.changelog.outputs.tag }}
