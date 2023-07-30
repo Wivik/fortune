@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="alternate" type="application/atom+xml" href="{{ website_url }}/{%if file == 'cowsay.html'%}cowfeed{%else%}tuxfeed{%endif%}_atom.xml" title="Fortune Atom Feed">
+    <link rel="alternate" type="application/rss+xml" href="{{ website_url }}/{%if file == 'cowsay.html'%}cowfeed{%else%}tuxfeed{%endif%}_rss.xml" title="Fortune RSS Feed">
+    <title>Fortune - The daily fortune said by a cow, or Tux</title>
+</head>
+<body>
+  <header>
+    <h1>Fortune</h1>
+    <p>The daily fortune, said by a Cow or Tux, or sometimes something else.</p>
+    <nav>
+        <a href="cowsay.html">Cowsay</a>
+        <a href="tuxsay.html">Tuxsay</a>
+        <a href="{{ website_url }}/{%if file == 'tuxsay.html'%}tuxfeed{%else%}cowfeed{%endif%}_rss.xml" title="Fortune RSS Feed">RSS Feed</a>
+    </nav>
+  </header>
+
+  <main>
+    <pre>
+{{ fortune }}
+    </pre>
+  </main>
+
+  <footer>
+    <p>Made by <a href="https://zedas.fr">Seb</a> - Using <a href="https://simplecss.org" target="_blank">SimpleCSS</a>, <a href="https://en.wikipedia.org/wiki/Cowsay">Cowsay</a> and <a href="https://en.wikipedia.org/wiki/Fortune_(Unix)" target="_blank">fortune</a> - Sources available on <a href="https://github.com/Wivik/fortune" target="_blank">GitHub</a></p>
+  </footer>
+</body>
+</html>
