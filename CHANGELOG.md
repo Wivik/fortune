@@ -1,4 +1,13 @@
-# 0.1.0 (2023-07-30)
+## [0.1.1](https://github.com/Wivik/fortune/compare/v0.1.0...v0.1.1) (2023-07-30)
+
+
+### Bug Fixes
+
+* security fixes broke the image ([f764c2a](https://github.com/Wivik/fortune/commit/f764c2a6baff3660f9e493db7654126bd073361e))
+
+
+
+# [0.1.0](https://github.com/Wivik/fortune/compare/c5fc5841f12e138624878aa46ea6c6cdb4e692fe...v0.1.0) (2023-07-30)
 
 
 ### Bug Fixes
