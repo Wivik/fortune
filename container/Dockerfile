@@ -10,6 +10,6 @@ ENV PATH=$PATH:/usr/games/
 
 USER fortune
 WORKDIR /fortune
-RUN pip install --upgrade pip && pip install -r requirements.txt --user
+RUN pip install --upgrade pip && pip install -r requirements.txt --user && mkdir output
 
 ENTRYPOINT ["python", "/fortune/fortune.py"]

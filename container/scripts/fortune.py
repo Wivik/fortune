@@ -14,8 +14,12 @@ args = arg_parser.parse_args()
 
 global website_url
 website_url = args.website_url
+
 global script_path
 script_path = os.path.dirname(__file__)
+
+global output_dir
+output_dir = os.path.join(script_path, 'output')
 
 global fortune_cmd
 fortune_cmd = '/usr/games/fortune'
@@ -108,8 +112,8 @@ def write_rss(whosays, fortune):
     fe.content(f'<pre>{fortune}</pre>')
     fe.link(href=f'{website_url}/{whosays}-say.html')
 
-    feed.atom_file(f'{whosays}_feed_atom.xml')
-    feed.rss_file(f'{whosays}_feed_rss.xml')
+    feed.atom_file( os.path.join(output_dir, f'{whosays}_feed_atom.xml'))
+    feed.rss_file( os.path.join(output_dir, f'{whosays}_feed_rss.xml'))
 
     # print(feed.atom_str(pretty=True))
     # print(feed.rss_str(pretty=True))
@@ -127,6 +131,10 @@ def write_template(fortune, file):
 
 def main():
     """ main fuction ! """
+    ## create output dir if missing
+    if not os.path.exists(output_dir):
+        print(f'Create output dir {output_dir}')
+        os.mkdir(output_dir)
     ## call fortune command
     today_fortune = fortune()
     special_day = is_it_a_special_day()
@@ -138,11 +146,11 @@ def main():
         if say['say'] == 'cowsay':
             who_said = say['say']
             say_content = say['content'].decode()
-            write_template(say_content, 'index.html')
-            write_template(say_content, f'{who_said}.html')
+            write_template(say_content, os.path.join(output_dir, 'index.html'))
+            write_template(say_content,  os.path.join(output_dir, f'{who_said}.html'))
             write_rss(whosays=who_said, fortune=say_content)
         else:
-            write_template(say_content, f'{who_said}.html')
+            write_template(say_content,  os.path.join(output_dir, f'{who_said}.html'))
             write_rss(whosays=who_said, fortune=say_content)
 
 
