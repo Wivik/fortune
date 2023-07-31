@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/Wivik/fortune/compare/v0.2.0...v0.2.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* error in files write ([70428f1](https://github.com/Wivik/fortune/commit/70428f14758cd9f993a71780db067675e98b0339))
+
+
+
 # [0.2.0](https://github.com/Wivik/fortune/compare/v0.1.1...v0.2.0) (2023-07-30)
 
 
