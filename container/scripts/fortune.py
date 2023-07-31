@@ -22,8 +22,10 @@ global output_dir
 output_dir = os.path.join(script_path, 'output')
 
 global fortune_cmd
+# fortune_cmd = '/usr/bin/fortune'
 fortune_cmd = '/usr/games/fortune'
 global cowsay_cmd
+# cowsay_cmd = '/usr/bin/cowsay'
 cowsay_cmd = '/usr/games/cowsay'
 
 
@@ -128,6 +130,7 @@ def write_template(fortune, file):
     with open(os.path.join(file), 'w') as f:
         f.write(render)
         f.close()
+    print(f'written {os.path.join(file)}')
 
 def main():
     """ main fuction ! """
@@ -143,13 +146,16 @@ def main():
 
     ## write html files
     for say in says_list:
+        # print(say['say'])
+        who_said = say['say']
+        say_content = say['content'].decode()
         if say['say'] == 'cowsay':
-            who_said = say['say']
-            say_content = say['content'].decode()
+            # print('cow')
             write_template(say_content, os.path.join(output_dir, 'index.html'))
             write_template(say_content,  os.path.join(output_dir, f'{who_said}.html'))
             write_rss(whosays=who_said, fortune=say_content)
         else:
+            # print('tux')
             write_template(say_content,  os.path.join(output_dir, f'{who_said}.html'))
             write_rss(whosays=who_said, fortune=say_content)
 
