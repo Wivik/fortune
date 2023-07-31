@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/Wivik/fortune/compare/v0.2.1...v0.2.2) (2023-07-31)
+
+
+### Bug Fixes
+
+* rss files path ([c6bf20f](https://github.com/Wivik/fortune/commit/c6bf20fa64c1b251d2dd302d90a0738c44845171))
+
+
+
 ## [0.2.1](https://github.com/Wivik/fortune/compare/v0.2.0...v0.2.1) (2023-07-31)
 
 
